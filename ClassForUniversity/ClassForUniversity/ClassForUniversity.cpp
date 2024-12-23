@@ -2,8 +2,6 @@
 # include <vector>
 # include <string>
 #include <algorithm>
-
-
 using namespace std;
 
 class Professor {
@@ -64,15 +62,27 @@ public:
 
 	void swap(string originalCourse, string courseToSwitch, int numberOfCourses) {
 		if (find(courses.begin(), courses.end(), originalCourse) == courses.end()) {
-			cout << "The course you want to switch is not in your course cart. " << endl;
+			cout << "The course you want to switch is not in your course cart. " << endl << endl;
 		}
 
 		for (int i = 0; i < numberOfCourses; i++) {
 			if (courses[i] == originalCourse) {
 				courses[i] = courseToSwitch;
-				cout << "The course has successfully swapped. Now your courses are ";
-
+				cout << "The course has successfully swapped. Now your courses are " << endl;
+				printStudent();
 			}
+		}
+	}
+
+	void drop(string originalCourse, int numberOfCourses) {
+		auto it = find(courses.begin(), courses.end(), originalCourse);
+		if (it == courses.end()) {
+			cout << "The course you want to switch is not in your course cart. " << endl;
+		}
+		else {
+			courses.erase(it);
+			cout << originalCourse << "has successfully removed from courses cart" << endl;
+			printStudent();
 		}
 	}
 
@@ -112,46 +122,57 @@ public:
 //};
 
 int main() {
-	int numberOfCourses = 0;
-	cout << "How many courses are you taking this semester? ";
-	cin >> numberOfCourses;
-	cout << endl;
-	Student s1("James", 123, "yka138@sfu.ca", 20, "Male", numberOfCourses);
-	string courseName;
-	for (int i = 0; i < numberOfCourses; i++) {
-		cout << "Type the name of a course: ";
-		getline(cin >> ws, courseName);
-		s1.enroll(courseName);
-	}
-	cout << endl;
-	//UnderGraduate g1("math");
 
-	s1.printStudent();
 	int userChoice = 0;
-	cout << endl << "Which service do you want to take? " << endl;
-	cout << "Option 1: Swap" << endl << "Option 2: Drop" << endl << "Option 3: End the system" << endl
-		<< "Please choose a number between 1-3: ";
+	cout << "Welcome to Univerisity system." << endl << "We offer you several options " <<
+		endl << "Option 1: Student" << endl << "Option 2: Professor" << endl << "Option 3: Course"
+		<< endl << "Option 4: Building" << endl << "User choice: ";
 	cin >> userChoice;
 	if (userChoice == 1) {
-		string originalCourse;
-		string courseToSwitch;
-		cout << "Thank you to choose the SWAP service. " << endl;
-		cout << "Please tell me the course you want to switch from your course cart: ";
-		getline(cin >> ws, originalCourse);
-		cout << "Please tell me the course you want to replace ";
-		getline(cin >> ws, courseToSwitch);
-		s1.swap(originalCourse, courseToSwitch, numberOfCourses);
+		int numberOfCourses = 0;
+		cout << "How many courses are you taking this semester? ";
+		cin >> numberOfCourses;
+		cout << endl;
+		Student s1("James", 123, "yka138@sfu.ca", 20, "Male", numberOfCourses);
+		string courseName;
+		for (int i = 0; i < numberOfCourses; i++) {
+			cout << "Type the name of a course: ";
+			getline(cin >> ws, courseName);
+			s1.enroll(courseName);
+		}
+		cout << endl;
+		//UnderGraduate g1("math");
+
 		s1.printStudent();
+		int userChoice = 0;
+		cout << endl << "Which service do you want to take? " << endl;
+		cout << "Option 1: Swap" << endl << "Option 2: Drop" << endl << "Option 3: End the system" << endl
+			<< "Please choose a number between 1-3: ";
+		cin >> userChoice;
+		if (userChoice == 1) {
+			string originalCourse;
+			string courseToSwitch;
+			cout << "Thank you to choose the SWAP service. " << endl;
+			cout << "Please tell me the course you want to switch from your course cart: ";
+			getline(cin >> ws, originalCourse);
+			cout << "Please tell me the course you want to replace: ";
+			getline(cin >> ws, courseToSwitch);
+			s1.swap(originalCourse, courseToSwitch, numberOfCourses);
+		}
+		else if (userChoice == 2) {
+			string originalCourse;
+			cout << "Thank you to choose the DROP service. " << endl;
+			cout << "Please tell me the course you want to drop: ";
+			getline(cin >> ws, originalCourse);
+			s1.drop(originalCourse, numberOfCourses);
+		}
+		else if (userChoice == 3) {
+			cout << "Thank you for using the university system.";
+			return 0;
+		}
 	}
-	else if (userChoice == 2) {
-		string originalCourse;
-		cout << "Thank you to choose the DROP service. " << endl;
-		cout << "Please tell me the course you want to drop: ";
-		getline(cin >> ws, originalCourse);
-	}
-	else if (userChoice == 3) {
-		return 0;
-	}
+
+	
 
 	//s1.setStudentMail("jam123@sfu.ca");
 	//cout << "After set" << endl;
