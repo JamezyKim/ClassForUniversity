@@ -1,4 +1,8 @@
 # include <iostream>
+# include <vector>
+# include <string>
+
+
 using namespace std;
 
 class Professor {
@@ -30,6 +34,9 @@ private:
 	string studentMail;
 	int age;
 	string sex;
+	int numberOfCourses;
+	vector<string> courses;
+
 public:
 	Student() {}
 
@@ -41,12 +48,17 @@ public:
 		this->sex = "";
 	}
 
-	Student(string name, int studentNumber, string studentMail, int age, string sex) {
+	Student(string name, int studentNumber, string studentMail, int age, string sex, int numberOfCourses) {
 		this->name = name;
 		this->studentNumber = studentNumber;
 		this->studentMail = studentMail;
 		this->age = age;
 		this->sex = sex;
+		this->numberOfCourses = numberOfCourses;
+	}
+
+	void enroll(string course) {
+		courses.push_back(course);
 	}
 
 	void printStudent() {
@@ -56,6 +68,10 @@ public:
 		cout << "Age: " << this->age << endl;
 		if (this->sex != "") {
 			cout << "Sex: " << this->sex << endl;
+		}
+		cout << "Courses: " << endl;
+		for (int i = 0; i < this->numberOfCourses; i++) {
+			cout << " - " << courses[i] << endl;
 		}
 	}
 
@@ -67,6 +83,7 @@ public:
 		this->studentMail = studentMail;
 	}
 
+
 	~Student() {}
 };
 
@@ -76,19 +93,29 @@ private:
 public:
 	UnderGraduate(string major) {
 		this->major = major;
-
 	}
 };
 
 int main() {
-	Student s1("James", 123, "yka138@sfu.ca", 20);
-	Student s2("Aiden", 456, "ad345@sfu.ca", 23, "Male");
+	int numberOfCourses = 0;
+	cout << "How many courses are you taking this semester? ";
+	cin >> numberOfCourses;
+	cout << endl;
+	Student s1("James", 123, "yka138@sfu.ca", 20, "Male", numberOfCourses);
+	string courseName;
+	for (int i = 0; i < numberOfCourses; i++) {
+		cout << "Type the name of a course: ";
+		getline(cin >> ws, courseName);
+		s1.enroll(courseName);
+	}
+	cout << endl;
+
 	UnderGraduate g1("math");
 
 	s1.printStudent();
-	s1.setStudentMail("jam123@sfu.ca");
-	cout << "After set" << endl;
-	s1.printStudent();
+	//s1.setStudentMail("jam123@sfu.ca");
+	//cout << "After set" << endl;
+	//s1.printStudent();
 
-	cout << s1.getStudentMail() << endl;
+	//cout << s1.getStudentMail() << endl;
 }
