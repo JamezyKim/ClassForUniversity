@@ -1,6 +1,27 @@
 # include <iostream>
 using namespace std;
 
+class Professor {
+private:
+	string name;
+	string courseName;
+	int age;
+	string sex;
+	int payment;
+
+public:
+	Professor(){}
+
+	Professor(string name, string courseName, int age, string sex, int payment) {
+		this->name = name;
+		this->courseName = courseName;
+		this->age = age;
+		this->sex;
+		this->payment = payment;
+	}
+
+
+};
 
 class Student {
 private:
@@ -10,10 +31,7 @@ private:
 	int age;
 	string sex;
 public:
-
-	Student() {
-
-	}
+	Student() {}
 
 	Student(string name, int studentNumber, string studentMail, int age) {
 		this->name = name;
