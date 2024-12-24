@@ -4,6 +4,46 @@
 #include <algorithm>
 using namespace std;
 
+class Building {
+private:
+	string name;
+public:
+	Building() {}
+
+	Building(string name){}
+
+	void printBuilding() {
+		cout << "Name: " << this->name << endl;
+	}
+	~Building() {};
+};
+
+class Courses {
+private:
+	string name;
+	int courseNumber;
+	int courseUnit;
+	string professorName;
+
+public:
+	Courses(){}
+
+	Courses(string name, int courseNumber, int courseUnit, string professorName) {
+		this->name = name;
+		this->courseNumber = courseNumber;
+		this->courseUnit = courseUnit;
+		this->professorName = professorName;
+	}
+
+	void printCourse() {
+		cout << "Name: " << this->name << endl;
+		cout << "course number: " << this->courseNumber << endl;
+		cout << "course unit: " << this->courseUnit << endl;
+		cout << "Professor name: " << this->professorName << endl;
+	}
+	~Courses() {};
+};
+
 class Professor {
 private:
 	string name;
@@ -11,19 +51,39 @@ private:
 	int age;
 	string sex;
 	int payment;
+	int numberOfCourses;
+	int professorID;
+	vector<string> courses;
 
 public:
 	Professor(){}
 
-	Professor(string name, string courseName, int age, string sex, int payment) {
+	Professor(string name, string courseName, int age, string sex, int payment, int numberOfCourses, int professorID) {
 		this->name = name;
 		this->courseName = courseName;
 		this->age = age;
-		this->sex;
+		this->sex = sex;
 		this->payment = payment;
+		this->numberOfCourses = numberOfCourses;
+		this->professorID = professorID;
+	}
+	void printProfessor() {
+		cout << "Name: " << this->name << endl;
+		cout << "Course name: " << this->courseName << endl;
+		cout << "Age: " << this->age << endl;
+		cout << "Sex: " << this->sex << endl;
+		cout << "Payment: " << this->payment << endl;
+		cout << "Professor ID: " << this->professorID << endl;
+		cout << "Courses: " << endl;
+		for (int i = 0; i < this->numberOfCourses; i++) {
+			cout << " - " << courses[i] << endl;
+		}
 	}
 
-
+	void addCourse(string course) {
+		courses.push_back(course);
+	}
+	~Professor() {};
 };
 
 class Student {
@@ -171,7 +231,32 @@ int main() {
 			return 0;
 		}
 	}
+	else if (userChoice == 2) {
+		int numberOfCourses = 0;
+		cout << "Hello Professor." << endl << "How many courses are you teaching this semester? ";
+		cin >> numberOfCourses;
+		cout << endl;
+		Professor p1("Pro1", "Computing Scinece", 45, "Male", 6000, numberOfCourses, 540349534);
 
+		string courseName;
+		for (int i = 0; i < numberOfCourses; i++) {
+			cout << "Type the name of a course: ";
+			getline(cin >> ws, courseName);
+			p1.addCourse(courseName);
+		}
+		cout << endl;
+
+		p1.printProfessor();
+	}
+	else if (userChoice == 3) {
+
+		Courses c1("CMPT125", 543798, 3, "David");
+		c1.printCourse();
+	}
+	else if (userChoice == 4) {
+		Building b1("SUB");
+		b1.printBuilding();
+	}
 	
 
 	//s1.setStudentMail("jam123@sfu.ca");
