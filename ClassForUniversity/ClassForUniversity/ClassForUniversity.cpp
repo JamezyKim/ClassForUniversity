@@ -7,14 +7,28 @@ using namespace std;
 class Building {
 private:
 	string name;
+	int capacity;
+	int numberOfFloors;
+	vector<string> courses;
 public:
 	Building() {}
 
-	Building(string name){}
+	Building(string name, int capacity, int numberOfFloors){
+		this->name = name;
+		this->capacity = capacity;
+		this->numberOfFloors;
+	}
 
 	void printBuilding() {
 		cout << "Name: " << this->name << endl;
+		cout << "Capacity: " << this->capacity << endl;
+		cout << "Number of floors: " << this->numberOfFloors << endl;
 	}
+
+	void addCourse(string course) {
+		courses.push_back(course);
+	}
+
 	~Building() {};
 };
 
@@ -26,7 +40,7 @@ private:
 	string professorName;
 
 public:
-	Courses(){}
+	Courses() {}
 
 	Courses(string name, int courseNumber, int courseUnit, string professorName) {
 		this->name = name;
@@ -53,12 +67,16 @@ private:
 	int payment;
 	int numberOfCourses;
 	int professorID;
+	string mail;
+	string major;
 	vector<string> courses;
 
 public:
 	Professor(){}
 
-	Professor(string name, string courseName, int age, string sex, int payment, int numberOfCourses, int professorID) {
+	Professor(string name, string courseName, int age, string sex, int payment, int numberOfCourses,
+		int professorID, string mail, string major) {
+
 		this->name = name;
 		this->courseName = courseName;
 		this->age = age;
@@ -66,6 +84,8 @@ public:
 		this->payment = payment;
 		this->numberOfCourses = numberOfCourses;
 		this->professorID = professorID;
+		this->mail = mail;
+		this->major = major;
 	}
 	void printProfessor() {
 		cout << "Name: " << this->name << endl;
@@ -83,6 +103,19 @@ public:
 	void addCourse(string course) {
 		courses.push_back(course);
 	}
+
+	string getProfessorMail() {
+		return this->mail;
+	}
+
+	void setProfessorMail(string mail) {
+		this->mail = mail;
+	}
+
+	void setProfessorMajor(string major) {
+		this->major = major;
+	}
+
 	~Professor() {};
 };
 
@@ -236,7 +269,7 @@ int main() {
 		cout << "Hello Professor." << endl << "How many courses are you teaching this semester? ";
 		cin >> numberOfCourses;
 		cout << endl;
-		Professor p1("Pro1", "Computing Scinece", 45, "Male", 6000, numberOfCourses, 540349534);
+		Professor p1("Pro1", "Computing Scinece", 45, "Male", 6000, numberOfCourses, 540349534, "abs@sfu.ca", "Computer Scince");
 
 		string courseName;
 		for (int i = 0; i < numberOfCourses; i++) {
@@ -254,7 +287,19 @@ int main() {
 		c1.printCourse();
 	}
 	else if (userChoice == 4) {
-		Building b1("SUB");
+		int numberOfCourses = 0;
+		cout << "This service is for setting a building."
+			<< endl <<"Please tell me the number of courses for the building: ";
+		cin >> numberOfCourses;
+		cout << endl;
+		Building b1("SUB", 4000, 4);
+		string courseName;
+		for (int i = 0; i < numberOfCourses; i++) {
+			cout << "Type the name of a course: ";
+			getline(cin >> ws, courseName);
+			b1.addCourse(courseName);
+		}
+		cout << endl;
 		b1.printBuilding();
 	}
 	
