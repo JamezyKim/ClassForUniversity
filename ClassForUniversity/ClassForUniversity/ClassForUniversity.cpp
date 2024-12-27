@@ -4,6 +4,21 @@
 #include <algorithm>
 using namespace std;
 
+class Node {
+public:
+	int value;
+	Node* next;
+	Node() {
+		value = 0;
+		next = NULL;
+	}
+	Node(int value, Node* next) {
+		this->value = value;
+		this->next = next;
+	}
+	~Node() {};
+};
+
 class Building {
 private:
 	string name;
@@ -16,7 +31,7 @@ public:
 	Building(string name, int capacity, int numberOfFloors){
 		this->name = name;
 		this->capacity = capacity;
-		this->numberOfFloors;
+		this->numberOfFloors = numberOfFloors;
 	}
 
 	void printBuilding() {
@@ -215,93 +230,98 @@ public:
 //};
 
 int main() {
-
 	int userChoice = 0;
-	cout << "Welcome to Univerisity system." << endl << "We offer you several options " <<
-		endl << "Option 1: Student" << endl << "Option 2: Professor" << endl << "Option 3: Course"
-		<< endl << "Option 4: Building" << endl << "User choice: ";
-	cin >> userChoice;
-	if (userChoice == 1) {
-		int numberOfCourses = 0;
-		cout << "How many courses are you taking this semester? ";
-		cin >> numberOfCourses;
-		cout << endl;
-		Student s1("James", 123, "yka138@sfu.ca", 20, "Male", numberOfCourses);
-		string courseName;
-		for (int i = 0; i < numberOfCourses; i++) {
-			cout << "Type the name of a course: ";
-			getline(cin >> ws, courseName);
-			s1.enroll(courseName);
-		}
-		cout << endl;
-		//UnderGraduate g1("math");
 
-		s1.printStudent();
-		int userChoice = 0;
-		cout << endl << "Which service do you want to take? " << endl;
-		cout << "Option 1: Swap" << endl << "Option 2: Drop" << endl << "Option 3: End the system" << endl
-			<< "Please choose a number between 1-3: ";
+	do {
+		cout << "Welcome to Univerisity system." << endl << "We offer you several options " <<
+			endl << "Option 1: Student" << endl << "Option 2: Professor" << endl << "Option 3: Course"
+			<< endl << "Option 4: Building" << endl << "Option 5: Ends the system" << endl << "User choice: ";
 		cin >> userChoice;
 		if (userChoice == 1) {
-			string originalCourse;
-			string courseToSwitch;
-			cout << "Thank you to choose the SWAP service. " << endl;
-			cout << "Please tell me the course you want to switch from your course cart: ";
-			getline(cin >> ws, originalCourse);
-			cout << "Please tell me the course you want to replace: ";
-			getline(cin >> ws, courseToSwitch);
-			s1.swap(originalCourse, courseToSwitch, numberOfCourses);
+			int numberOfCourses = 0;
+			cout << "How many courses are you taking this semester? ";
+			cin >> numberOfCourses;
+			cout << endl;
+			Student s1("James", 123, "yka138@sfu.ca", 20, "Male", numberOfCourses);
+			string courseName;
+			for (int i = 0; i < numberOfCourses; i++) {
+				cout << "Type the name of a course: ";
+				getline(cin >> ws, courseName);
+				s1.enroll(courseName);
+			}
+			cout << endl;
+			//UnderGraduate g1("math");
+
+			s1.printStudent();
+			int userChoice = 0;
+			cout << endl << "Which service do you want to take? " << endl;
+			cout << "Option 1: Swap" << endl << "Option 2: Drop" << endl << "Option 3: End the system" << endl
+				<< "Please choose a number between 1-3: ";
+			cin >> userChoice;
+			if (userChoice == 1) {
+				string originalCourse;
+				string courseToSwitch;
+				cout << "Thank you to choose the SWAP service. " << endl;
+				cout << "Please tell me the course you want to switch from your course cart: ";
+				getline(cin >> ws, originalCourse);
+				cout << "Please tell me the course you want to replace: ";
+				getline(cin >> ws, courseToSwitch);
+				s1.swap(originalCourse, courseToSwitch, numberOfCourses);
+			}
+			else if (userChoice == 2) {
+				string originalCourse;
+				cout << "Thank you to choose the DROP service. " << endl;
+				cout << "Please tell me the course you want to drop: ";
+				getline(cin >> ws, originalCourse);
+				s1.drop(originalCourse, numberOfCourses);
+			}
+			else if (userChoice == 3) {
+				cout << "Thank you for using the university system.";
+				return 0;
+			}
 		}
 		else if (userChoice == 2) {
-			string originalCourse;
-			cout << "Thank you to choose the DROP service. " << endl;
-			cout << "Please tell me the course you want to drop: ";
-			getline(cin >> ws, originalCourse);
-			s1.drop(originalCourse, numberOfCourses);
+			int numberOfCourses = 0;
+			cout << "Hello Professor." << endl << "How many courses are you teaching this semester? ";
+			cin >> numberOfCourses;
+			cout << endl;
+			Professor p1("Pro1", "Computing Scinece", 45, "Male", 6000, numberOfCourses, 540349534, "abs@sfu.ca", "Computer Scince");
+
+			string courseName;
+			for (int i = 0; i < numberOfCourses; i++) {
+				cout << "Type the name of a course: ";
+				getline(cin >> ws, courseName);
+				p1.addCourse(courseName);
+			}
+			cout << endl;
+
+			p1.printProfessor();
 		}
 		else if (userChoice == 3) {
-			cout << "Thank you for using the university system.";
-			return 0;
-		}
-	}
-	else if (userChoice == 2) {
-		int numberOfCourses = 0;
-		cout << "Hello Professor." << endl << "How many courses are you teaching this semester? ";
-		cin >> numberOfCourses;
-		cout << endl;
-		Professor p1("Pro1", "Computing Scinece", 45, "Male", 6000, numberOfCourses, 540349534, "abs@sfu.ca", "Computer Scince");
 
-		string courseName;
-		for (int i = 0; i < numberOfCourses; i++) {
-			cout << "Type the name of a course: ";
-			getline(cin >> ws, courseName);
-			p1.addCourse(courseName);
+			Courses c1("CMPT125", 543798, 3, "David");
+			c1.printCourse();
 		}
-		cout << endl;
-
-		p1.printProfessor();
-	}
-	else if (userChoice == 3) {
-
-		Courses c1("CMPT125", 543798, 3, "David");
-		c1.printCourse();
-	}
-	else if (userChoice == 4) {
-		int numberOfCourses = 0;
-		cout << "This service is for setting a building."
-			<< endl <<"Please tell me the number of courses for the building: ";
-		cin >> numberOfCourses;
-		cout << endl;
-		Building b1("SUB", 4000, 4);
-		string courseName;
-		for (int i = 0; i < numberOfCourses; i++) {
-			cout << "Type the name of a course: ";
-			getline(cin >> ws, courseName);
-			b1.addCourse(courseName);
+		else if (userChoice == 4) {
+			int numberOfCourses = 0;
+			cout << "This service is for setting a building."
+				<< endl << "Please tell me the number of courses for the building: ";
+			cin >> numberOfCourses;
+			cout << endl;
+			Building b1("SUB", 4000, 4);
+			string courseName;
+			for (int i = 0; i < numberOfCourses; i++) {
+				cout << "Type the name of a course: ";
+				getline(cin >> ws, courseName);
+				b1.addCourse(courseName);
+			}
+			cout << endl;
+			b1.printBuilding();
 		}
-		cout << endl;
-		b1.printBuilding();
-	}
+	} while (userChoice != 5);
+	
+
+
 	
 
 	//s1.setStudentMail("jam123@sfu.ca");
