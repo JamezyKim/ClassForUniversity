@@ -19,6 +19,74 @@ public:
 	~Node() {};
 };
 
+class Stack {
+private:
+	Node* top = NULL;
+	int stackSize = 0;
+public:
+
+	Stack() {};
+	void push(int value) {
+		Node* newNode = new Node(value, top);
+		top = newNode;
+		stackSize++;
+	}
+	int pop() {
+		if (top == NULL) {
+			return -1;
+		}
+		Node* tempNode = top;
+		top = top->next;
+		int result = tempNode->value;
+		delete tempNode;
+		return result;
+	}
+
+	void printStack() {
+		Node* tempNode = top;
+		while (tempNode != NULL) {
+			if (tempNode->next == NULL) {
+				cout << tempNode->value;
+			}
+			else {
+				cout << tempNode->value << "->";
+			}
+			tempNode = tempNode->next;
+		}
+	}
+
+	int isEmpty() {
+		if (top == NULL) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+
+	int returnSize() {
+		return stackSize;
+	}
+
+	int returnTop() {
+		if (top != NULL) {
+			return top->value;
+		}
+		else {
+			return -1;
+		}
+	}
+
+	~Stack() {
+		if (stackSize > 0) {
+			for (int i = 0; i < stackSize; i++) {
+				pop();
+			}
+		}
+	};
+};
+
+
 class Building {
 private:
 	string name;
