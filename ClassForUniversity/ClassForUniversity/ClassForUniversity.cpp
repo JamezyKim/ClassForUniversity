@@ -86,6 +86,137 @@ public:
 	};
 };
 
+class List {
+private:
+	int len;
+	int value;
+	Node* head;
+public:
+	int getFirstElement() {
+		if (head != NULL) {
+			Node* tempNode = head;
+			head = tempNode->next;
+			int result = tempNode->value;
+			delete tempNode;
+			return result;
+		}
+	}
+
+	void addToFront(int value) {
+		if (head == NULL) {
+			Node* newNode = new Node(value, head);
+			newNode->value = value;
+			head = newNode;
+		}
+		Node* newNode = new Node(value, head);
+		newNode->value = value;
+		newNode->next = head;
+		head = newNode;
+	}
+
+	void removeFirst() {
+		if (head != NULL) {
+			Node* tempNode = head;
+			head = tempNode->next;
+			delete tempNode;
+		}
+	}
+
+	int getIth(int value) {
+		int i = 0;
+		if (head != NULL) {
+			Node* tempNode = head;
+			while (tempNode->next != NULL) {
+				if (tempNode->value == value) {
+					return i;
+				}
+				tempNode = tempNode->next;
+				i++;
+			}
+		}
+		else {
+			return -1;
+		}
+	}
+
+	int getNextElement(int value) {
+		if (head != NULL) {
+			Node* tempNode = head->next;
+			int result = tempNode->value;
+			head->next = tempNode->next;
+			return result;
+		}
+	}
+
+	void insertAtLocationI(int i, int value) {
+		Node* newNode = new Node(value, head);
+		int index = 0;
+		if (head == NULL) {
+			head = newNode;
+		}
+		else {
+			Node* tempNode = head;
+			while (index != i) {
+				tempNode = tempNode->next;
+			}
+			newNode->next = tempNode->next;
+			tempNode->next = newNode;
+		}
+	}
+
+	//void deleteAtLocationI(int i) {
+	//	int index = 0;
+	//	if (head != NULL) {
+	//		Node* tempNode = head;
+
+	//		if (i == 0) {
+	//			head = tempNode->next;
+	//			delete tempNode;
+	//		}
+
+	//		while (index != i) {
+	//			tempNode = tempNode->next;
+	//			index++;
+	//		}
+	//		delete tempNode;
+	//	}
+	//}
+
+	int findX(int value) {
+		if (head != NULL) {
+			Node* tempNode = head;
+			while (tempNode->next != NULL) {
+				if (tempNode->value == value) {
+					return value;
+				}
+			}
+		}
+		else {
+			cout << "The value does not exist in the list" << endl;
+		}
+	}
+
+	void printList() {
+		Node* tempNode = head;
+		while (tempNode != NULL) {
+			if (tempNode->next == NULL) {
+				cout << tempNode->value;
+			}
+			else {
+				cout << tempNode->value << "->";
+			}
+			tempNode = tempNode->next;
+		}
+	}
+
+	~List() {
+		while (head != NULL) {
+			Node* tempNode = head;
+			head = head->next;
+			delete tempNode;
+		}
+	}
+};
 
 class Building {
 private:
