@@ -1,4 +1,60 @@
 ﻿  ClassForUniversity.cpp
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(30,27): error C2665: 'Node::Node': no overloaded function could convert all the argument types
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(15,2):
+      could be 'Node::Node(char,Node *)'
+          C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(30,27):
+          'Node::Node(char,Node *)': cannot convert argument 1 from 'std::string' to 'char'
+              C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(30,28):
+              No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(30,27):
+      while trying to match the argument list '(std::string, Node *)'
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(44,3): error C2440: 'return': cannot convert from 'int' to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(44,3):
+      'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string': no overloaded function could convert all the argument types
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xstring(749,5):
+          could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(const _Elem *const )'
+          with
+          [
+              _Elem=char
+          ]
+              C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(44,3):
+              'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(const _Elem *const )': cannot convert argument 1 from 'int' to 'const _Elem *const '
+          with
+          [
+              _Elem=char
+          ]
+                  C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(44,10):
+                  Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or parenthesized function-style cast
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xstring(1327,5):
+          or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(std::initializer_list<_Elem>,const _Alloc &)'
+          with
+          [
+              _Elem=char,
+              _Alloc=std::allocator<char>
+          ]
+              C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(44,3):
+              'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(std::initializer_list<_Elem>,const _Alloc &)': cannot convert argument 1 from 'int' to 'std::initializer_list<_Elem>'
+          with
+          [
+              _Elem=char,
+              _Alloc=std::allocator<char>
+          ]
+          and
+          [
+              _Elem=char
+          ]
+                  C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(44,10):
+                  Conversion requires a second user-defined-conversion operator or constructor
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xstring(779,5):
+          or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(_Iter,_Iter,const _Alloc &)'
+          with
+          [
+              _Alloc=std::allocator<char>
+          ]
+          C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(44,3):
+          while trying to match the argument list '(int)'
+  
 C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(362,11): error C2039: 'push_back': is not a member of 'Stack'
       C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(22,7):
       see declaration of 'Stack'

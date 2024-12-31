@@ -6,13 +6,13 @@ using namespace std;
 
 class Node {
 public:
-	char value;
+	string value;
 	Node* next;
 	Node() {
 		value = ' ';
 		next = NULL;
 	}
-	Node(int value, Node* next) {
+	Node(string value, Node* next) {
 		this->value = value;
 		this->next = next;
 	}
@@ -23,22 +23,24 @@ class Stack {
 private:
 	Node* top = NULL;
 	int stackSize = 0;
-public:
 
-	Stack() {};
-	void push(int value) {
+public:
+	Stack() {}
+
+	void push(string value) {
 		Node* newNode = new Node(value, top);
 		top = newNode;
 		stackSize++;
 	}
-	int pop() {
+
+	string pop() {
 		if (top == NULL) {
-			return -1;
+			return ""; 
 		}
 
 		Node* tempNode = top;
 		top = top->next;
-		int result = tempNode->value;
+		string result = tempNode->value;
 		delete tempNode;
 		stackSize--;
 		return result;
@@ -46,46 +48,38 @@ public:
 
 	void printStack() {
 		Node* tempNode = top;
-		int count = 0;
 		while (tempNode != NULL) {
-			if (tempNode->next == NULL) {
-				cout << tempNode->value;
-			}
-			else {
-				cout << tempNode->value << "->";
+			cout << tempNode->value;
+			if (tempNode->next != NULL) {
+				cout << "->";
 			}
 			tempNode = tempNode->next;
-			count++;
 		}
+		cout << endl;
 	}
 
 	bool isEmpty() {
-		if (top == NULL) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return top == NULL;
 	}
 
 	int returnSize() {
 		return stackSize;
 	}
 
-	int returnTop() {
+	string returnTop() {
 		if (top != NULL) {
 			return top->value;
 		}
 		else {
-			return -1;
+			return "";
 		}
 	}
 
-	int getFirstElement() {
+	string getFirstElement() {
 		if (top != NULL) {
 			Node* tempNode = top;
 			top = tempNode->next;
-			int result = tempNode->value;
+			string result = tempNode->value;
 			delete tempNode;
 			return result;
 		}
@@ -100,7 +94,7 @@ public:
 		}
 	}
 
-	int getIth(int value) {
+	int getIth(string value) {
 		int i = 0;
 		if (top != NULL) {
 			Node* tempNode = top;
@@ -117,16 +111,16 @@ public:
 		}
 	}
 
-	int getNextElement(int value) {
+	string getNextElement(string value) {
 		if (top != NULL) {
 			Node* tempNode = top->next;
-			int result = tempNode->value;
+			string result = tempNode->value;
 			top->next = tempNode->next;
 			return result;
 		}
 	}
 
-	void insertAtLocationI(int i, int value) {
+	void insertAtLocationI(int i, string value) {
 		Node* newNode = new Node(value, top);
 		int index = 0;
 		if (top == NULL) {
@@ -178,7 +172,7 @@ public:
 		}
 	}
 
-	int findX(int value) {
+	string findX(string value) {
 		if (top != NULL) {
 			Node* tempNode = top;
 			while (tempNode->next != NULL) {
@@ -198,7 +192,8 @@ public:
 			length++;
 		}
 		for (int i = 0; i < length; i++) {
-			Node* newNode = new Node(input[i], top);
+			string value(1, input[i]);
+			Node* newNode = new Node(value, top);
 			top = newNode;
 			stackSize++;
 		}
@@ -218,7 +213,7 @@ private:
 	string name;
 	int capacity;
 	int numberOfFloors;
-	vector<string> courses;
+	Stack courses;
 public:
 	Building() {}
 
@@ -235,7 +230,7 @@ public:
 	}
 
 	void addCourse(string course) {
-		courses.push_back(course);
+		courses.push(course);
 	}
 
 	~Building() {};
@@ -278,7 +273,7 @@ private:
 	int professorID;
 	string mail;
 	string major;
-	vector<string> courses;
+	Stack courses;
 
 public:
 	Professor(){}
@@ -305,12 +300,12 @@ public:
 		cout << "Professor ID: " << this->professorID << endl;
 		cout << "Courses: " << endl;
 		for (int i = 0; i < this->numberOfCourses; i++) {
-			cout << " - " << courses[i] << endl;
+			cout << " - " << courses.pop() << endl;
 		}
 	}
 
 	void addCourse(string course) {
-		courses.push_back(course);
+		courses.push(course);
 	}
 
 	string getProfessorMail() {
@@ -359,7 +354,7 @@ public:
 	}
 
 	void enroll(string course) {
-		courses.push_back(course);
+		courses.push(course);
 	}
 
 	void swap(string originalCourse, string courseToSwitch, int numberOfCourses) {
