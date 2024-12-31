@@ -358,29 +358,54 @@ public:
 	}
 
 	void swap(string originalCourse, string courseToSwitch, int numberOfCourses) {
-		if (find(courses.begin(), courses.end(), originalCourse) == courses.end()) {
+		bool found = false;
+		Stack tempStack;
+		while (!courses.isEmpty()) {
+			string tempCourse = courses.pop();
+			if (tempCourse == originalCourse) {
+				tempStack.push(courseToSwitch);
+				found = true;
+			}
+			else {
+				tempStack.push(originalCourse);
+			}
+		}
+		if (found == false) {
 			cout << "The course you want to switch is not in your course cart. " << endl << endl;
 		}
 
-		for (int i = 0; i < numberOfCourses; i++) {
-			if (courses[i] == originalCourse) {
-				courses[i] = courseToSwitch;
-				cout << "The course has successfully swapped. Now your courses are " << endl;
-				printStudent();
-			}
+		else {
+			cout << "The course has successfully swapped. Now your courses are " << endl;
+			printStudent();
 		}
+
 	}
 
 	void drop(string originalCourse, int numberOfCourses) {
-		auto it = find(courses.begin(), courses.end(), originalCourse);
-		if (it == courses.end()) {
-			cout << "The course you want to switch is not in your course cart. " << endl;
+
+		Stack tempStack;
+		bool found = false;
+
+		while (!tempStack.isEmpty()) {
+			string tempCourse = courses.pop();
+			if (tempCourse == originalCourse) {
+				found = true;
+				cout << "The course you wanted to drop has successfully dropped." << endl;
+			}
+			else {
+				tempStack.push(originalCourse);
+			}
 		}
-		else {
-			courses.erase(it);
-			cout << originalCourse << "has successfully removed from courses cart" << endl;
-			printStudent();
+
+		if (found == false) {
+			cout << "The course you want to drop does not exist in your cart" << endl;
 		}
+
+		while (!tempStack.isEmpty()) {
+			courses.push(tempStack.pop());
+		}
+		printStudent();
+
 	}
 
 	void printStudent() {
@@ -392,8 +417,15 @@ public:
 			cout << "Sex: " << this->sex << endl;
 		}
 		cout << "Courses: " << endl;
-		for (int i = 0; i < this->numberOfCourses; i++) {
-			cout << " - " << courses[i] << endl;
+		Stack tempStack;
+		while (!courses.isEmpty()) {
+			string course = courses.pop(); 
+			tempStack.push(course);        
+			cout << " - " << course << endl; 
+		}
+
+		while (!tempStack.isEmpty()) {
+			courses.push(tempStack.pop()); 
 		}
 	}
 
