@@ -1,2 +1,49 @@
 ﻿  ClassForUniversity.cpp
-  ClassForUniversity.vcxproj -> C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\x64\Debug\ClassForUniversity.exe
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(362,11): error C2039: 'push_back': is not a member of 'Stack'
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(22,7):
+      see declaration of 'Stack'
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(366,20): error C2039: 'begin': is not a member of 'Stack'
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(22,7):
+      see declaration of 'Stack'
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(366,37): error C2039: 'end': is not a member of 'Stack'
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(22,7):
+      see declaration of 'Stack'
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(366,7): error C2672: 'find': no matching overloaded function found
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xutility(6019,31):
+      could be '_InIt std::find(_InIt,const _InIt,const _Ty &)'
+          C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(366,7):
+          '_InIt std::find(_InIt,const _InIt,const _Ty &)': expects 3 arguments - 2 provided
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(366,71): error C2039: 'end': is not a member of 'Stack'
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(22,7):
+      see declaration of 'Stack'
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(371,17): error C2676: binary '[': 'Stack' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(372,14): error C2676: binary '[': 'Stack' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(380,26): error C2039: 'begin': is not a member of 'Stack'
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(22,7):
+      see declaration of 'Stack'
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(380,43): error C2039: 'end': is not a member of 'Stack'
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(22,7):
+      see declaration of 'Stack'
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(380,13): error C2672: 'find': no matching overloaded function found
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xutility(6019,31):
+      could be '_InIt std::find(_InIt,const _InIt,const _Ty &)'
+          C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(380,13):
+          '_InIt std::find(_InIt,const _InIt,const _Ty &)': expects 3 arguments - 2 provided
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(381,7): error C3536: 'it': cannot be used before it is initialized
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(381,21): error C2039: 'end': is not a member of 'Stack'
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(22,7):
+      see declaration of 'Stack'
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(385,12): error C2039: 'erase': is not a member of 'Stack'
+      C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(22,7):
+      see declaration of 'Stack'
+  
+C:\Users\PC\source\repos\ClassForUniversity\ClassForUniversity\ClassForUniversity\ClassForUniversity.cpp(401,30): error C2676: binary '[': 'Stack' does not define this operator or a conversion to a type acceptable to the predefined operator

@@ -32,8 +32,7 @@
               "RelativeToolTip": "..\\..\\CMPT125A4\\CMPT125A4\\CMPT125A4\\a4_superheroList.hpp",
               "ViewState": "AgIAAFoAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-23T13:15:04.017Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-23T13:15:04.017Z"
             },
             {
               "$type": "Document",
@@ -45,8 +44,7 @@
               "RelativeToolTip": "..\\..\\CMPT125A4\\CMPT125A4\\CMPT125A4\\a4_superheroLookupSystem.cpp",
               "ViewState": "AgIAAOoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-23T13:15:03.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-23T13:15:03.937Z"
             },
             {
               "$type": "Document",
@@ -54,9 +52,9 @@
               "Title": "ClassForUniversity.cpp",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\ClassForUniversity\\ClassForUniversity\\ClassForUniversity\\ClassForUniversity.cpp",
               "RelativeDocumentMoniker": "ClassForUniversity\\ClassForUniversity.cpp",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\ClassForUniversity\\ClassForUniversity\\ClassForUniversity\\ClassForUniversity.cpp",
-              "RelativeToolTip": "ClassForUniversity\\ClassForUniversity.cpp",
-              "ViewState": "AgIAAK0AAAAAAAAAAAAlwLsAAAAoAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\ClassForUniversity\\ClassForUniversity\\ClassForUniversity\\ClassForUniversity.cpp*",
+              "RelativeToolTip": "ClassForUniversity\\ClassForUniversity.cpp*",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAAANQAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-23T03:06:59.057Z",
               "EditorCaption": ""

@@ -6,10 +6,10 @@ using namespace std;
 
 class Node {
 public:
-	int value;
+	char value;
 	Node* next;
 	Node() {
-		value = 0;
+		value = ' ';
 		next = NULL;
 	}
 	Node(int value, Node* next) {
@@ -35,15 +35,18 @@ public:
 		if (top == NULL) {
 			return -1;
 		}
+
 		Node* tempNode = top;
 		top = top->next;
 		int result = tempNode->value;
 		delete tempNode;
+		stackSize--;
 		return result;
 	}
 
 	void printStack() {
 		Node* tempNode = top;
+		int count = 0;
 		while (tempNode != NULL) {
 			if (tempNode->next == NULL) {
 				cout << tempNode->value;
@@ -52,15 +55,16 @@ public:
 				cout << tempNode->value << "->";
 			}
 			tempNode = tempNode->next;
+			count++;
 		}
 	}
 
-	int isEmpty() {
+	bool isEmpty() {
 		if (top == NULL) {
-			return 1;
+			return true;
 		}
 		else {
-			return 0;
+			return false;
 		}
 	}
 
@@ -77,55 +81,29 @@ public:
 		}
 	}
 
-	~Stack() {
-		if (stackSize > 0) {
-			for (int i = 0; i < stackSize; i++) {
-				pop();
-			}
-		}
-	};
-};
-
-class List {
-private:
-	int len;
-	int value;
-	Node* head;
-public:
 	int getFirstElement() {
-		if (head != NULL) {
-			Node* tempNode = head;
-			head = tempNode->next;
+		if (top != NULL) {
+			Node* tempNode = top;
+			top = tempNode->next;
 			int result = tempNode->value;
 			delete tempNode;
 			return result;
 		}
 	}
 
-	void addToFront(int value) {
-		if (head == NULL) {
-			Node* newNode = new Node(value, head);
-			newNode->value = value;
-			head = newNode;
-		}
-		Node* newNode = new Node(value, head);
-		newNode->value = value;
-		newNode->next = head;
-		head = newNode;
-	}
-
 	void removeFirst() {
-		if (head != NULL) {
-			Node* tempNode = head;
-			head = tempNode->next;
+		if (top != NULL) {
+			Node* tempNode = top;
+			top = tempNode->next;
 			delete tempNode;
+			stackSize--;
 		}
 	}
 
 	int getIth(int value) {
 		int i = 0;
-		if (head != NULL) {
-			Node* tempNode = head;
+		if (top != NULL) {
+			Node* tempNode = top;
 			while (tempNode->next != NULL) {
 				if (tempNode->value == value) {
 					return i;
@@ -140,51 +118,69 @@ public:
 	}
 
 	int getNextElement(int value) {
-		if (head != NULL) {
-			Node* tempNode = head->next;
+		if (top != NULL) {
+			Node* tempNode = top->next;
 			int result = tempNode->value;
-			head->next = tempNode->next;
+			top->next = tempNode->next;
 			return result;
 		}
 	}
 
 	void insertAtLocationI(int i, int value) {
-		Node* newNode = new Node(value, head);
+		Node* newNode = new Node(value, top);
 		int index = 0;
-		if (head == NULL) {
-			head = newNode;
+		if (top == NULL) {
+			top = newNode;
+			stackSize++;
 		}
 		else {
-			Node* tempNode = head;
-			while (index != i) {
+			Node* tempNode = top;
+
+			if (i == 0) {
+				top = newNode;
+				stackSize++;
+				return;
+			}
+
+			while (index != i - 1) {
+
 				tempNode = tempNode->next;
+				index++;
 			}
 			newNode->next = tempNode->next;
 			tempNode->next = newNode;
 		}
+		stackSize++;
 	}
 
-	//void deleteAtLocationI(int i) {
-	//	int index = 0;
-	//	if (head != NULL) {
-	//		Node* tempNode = head;
+	void deleteAtLocationI(int i) {
+		int index = 0;
+		if (top != NULL) {
+			Node* tempNode = top;
+			Node* prevNode = top;
 
-	//		if (i == 0) {
-	//			head = tempNode->next;
-	//			delete tempNode;
-	//		}
+			if (i == 0) {
+				top = tempNode->next;
+				delete tempNode;
+				stackSize--;
+				return;
+			}
 
-	//		while (index != i) {
-	//			tempNode = tempNode->next;
-	//			index++;
-	//		}
-	//		delete tempNode;
-	//	}
-	//}
+			while (index != i) {
+				prevNode = tempNode;
+				tempNode = tempNode->next;
+				index++;
+			}
+			prevNode->next = tempNode->next;
+			tempNode->next = NULL;
+			delete tempNode;
+			stackSize--;
+		}
+	}
 
 	int findX(int value) {
-		if (head != NULL) {
-			Node* tempNode = head;
+		if (top != NULL) {
+			Node* tempNode = top;
 			while (tempNode->next != NULL) {
 				if (tempNode->value == value) {
 					return value;
@@ -196,26 +192,25 @@ public:
 		}
 	}
 
-	void printList() {
-		Node* tempNode = head;
-		while (tempNode != NULL) {
-			if (tempNode->next == NULL) {
-				cout << tempNode->value;
-			}
-			else {
-				cout << tempNode->value << "->";
-			}
-			tempNode = tempNode->next;
+	void storeElements(string input) {
+		int length = 0;
+		while (input[length] != '\0') {
+			length++;
+		}
+		for (int i = 0; i < length; i++) {
+			Node* newNode = new Node(input[i], top);
+			top = newNode;
+			stackSize++;
 		}
 	}
 
-	~List() {
-		while (head != NULL) {
-			Node* tempNode = head;
-			head = head->next;
-			delete tempNode;
+	~Stack() {
+		if (stackSize > 0) {
+			for (int i = 0; i < stackSize; i++) {
+				pop();
+			}
 		}
-	}
+	};
 };
 
 class Building {
@@ -341,7 +336,7 @@ private:
 	int age;
 	string sex;
 	int numberOfCourses;
-	vector<string> courses;
+	Stack courses;
 
 public:
 	Student() {}
