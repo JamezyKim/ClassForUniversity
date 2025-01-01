@@ -199,6 +199,19 @@ public:
 		}
 	}
 
+	void popInOrder(string input) {
+		int length = 0;
+		while (input[length] != '\0') {
+			length++;
+		}
+		int count = 0;
+		while (count < length) {
+			cout << input[count];
+			pop();
+			count++;
+		}
+	}
+
 	~Stack() {
 		if (stackSize > 0) {
 			for (int i = 0; i < stackSize; i++) {
@@ -417,11 +430,12 @@ public:
 			cout << "Sex: " << this->sex << endl;
 		}
 		cout << "Courses: " << endl;
+
 		Stack tempStack;
 		while (!courses.isEmpty()) {
 			string course = courses.pop(); 
+			cout << " - " << course << endl;
 			tempStack.push(course);        
-			cout << " - " << course << endl; 
 		}
 
 		while (!tempStack.isEmpty()) {
