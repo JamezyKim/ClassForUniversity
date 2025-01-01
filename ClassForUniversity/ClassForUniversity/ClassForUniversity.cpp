@@ -212,6 +212,25 @@ public:
 		}
 	}
 
+	void checkPalindrome(string input) {
+		int length = 0;
+		while (input[length] != '\0') {
+			length++;
+		}
+		int count = 0;
+		int countFromLast = length - 1;
+		while (count < length) {
+			if (input[count] != input[countFromLast]) {
+				cout << "This is not palindrome" << endl;
+				return;
+			}
+			count++;
+			countFromLast--;
+		}
+		cout << "This is palindrome" << endl;
+		return;
+	}
+
 	~Stack() {
 		if (stackSize > 0) {
 			for (int i = 0; i < stackSize; i++) {
